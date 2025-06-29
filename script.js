@@ -194,4 +194,4 @@ const questions = [
       { text: "Advice and ideas.", type: "Communication" },
       { text: "Comfort and warmth.", type: "Nurturing" },
       { text: "Fun and energy.", type: "Passion" },
-      { text: "Insight and wisdom.", type
+      { text: "Insight and wisdom.", type"
