@@ -194,7 +194,6 @@ const questions = [
       { text: "Advice and ideas.", type: "Communication" },
       { text: "Comfort and warmth.", type: "Nurturing" },
       { text: "Fun and energy.", type: "Passion" },
-      { text: "Insight and wisdom.", type"
       { text: "Insight and wisdom.", type: "Introspection" },
       { text: "Conflict resolution.", type: "Harmony" },
       { text: "Relationship advice.", type: "Devotion" },
@@ -205,3 +204,66 @@ const questions = [
     ]
   }
 ];
+
+const results = {
+  Confidence: "You are bold and assertive like Aries ♈️",
+  Stability: "You are calm and reliable like Taurus ♉️",
+  Communication: "You are expressive and curious like Gemini ♊️",
+  Nurturing: "You are caring and protective like Cancer ♋️",
+  Passion: "You are vibrant and charismatic like Leo ♌️",
+  Introspection: "You are thoughtful and analytical like Virgo ♍️",
+  Harmony: "You are balanced and just like Libra ♎️",
+  Devotion: "You are intense and loyal like Scorpio ♏️",
+  Adventure: "You are optimistic and free-spirited like Sagittarius ♐️",
+  Discipline: "You are ambitious and persistent like Capricorn ♑️",
+  Individuality: "You are unique and independent like Aquarius ♒️",
+  Compassion: "You are empathetic and wise like Pisces ♓️"
+};
+
+let current = 0;
+let counts = {};
+
+const questionEl = document.getElementById("question");
+const answersEl = document.getElementById("answers");
+const progressEl = document.getElementById("progress");
+const resultEl = document.getElementById("result");
+
+function showQuestion() {
+  const q = questions[current];
+  questionEl.textContent = q.question;
+  answersEl.innerHTML = "";
+  q.answers.forEach(a => {
+    const btn = document.createElement("button");
+    btn.textContent = a.text;
+    btn.onclick = () => selectAnswer(a.type);
+    answersEl.appendChild(btn);
+  });
+  progressEl.textContent = `Question ${current + 1} of ${questions.length}`;
+}
+
+function selectAnswer(type) {
+  counts[type] = (counts[type] || 0) + 1;
+  current++;
+  if (current < questions.length) {
+    showQuestion();
+  } else {
+    showResult();
+  }
+}
+
+function showResult() {
+  let top = null;
+  let max = 0;
+  for (const [type, count] of Object.entries(counts)) {
+    if (count > max) {
+      max = count;
+      top = type;
+    }
+  }
+  resultEl.textContent = results[top] || "Could not determine result.";
+  questionEl.textContent = "";
+  answersEl.innerHTML = "";
+  progressEl.textContent = "";
+}
+
+showQuestion();
