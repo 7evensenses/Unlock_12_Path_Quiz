@@ -195,3 +195,13 @@ const questions = [
       { text: "Comfort and warmth.", type: "Nurturing" },
       { text: "Fun and energy.", type: "Passion" },
       { text: "Insight and wisdom.", type"
+      { text: "Insight and wisdom.", type: "Introspection" },
+      { text: "Conflict resolution.", type: "Harmony" },
+      { text: "Relationship advice.", type: "Devotion" },
+      { text: "Trip planning.", type: "Adventure" },
+      { text: "Career motivation.", type: "Discipline" },
+      { text: "Real talk.", type: "Individuality" },
+      { text: "Emotional support.", type: "Compassion" },
+    ]
+  }
+];
